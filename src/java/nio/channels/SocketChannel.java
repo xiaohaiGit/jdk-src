@@ -399,6 +399,10 @@ public abstract class SocketChannel
      * operation failed then invoking this method will cause an appropriate
      * {@link java.io.IOException} to be thrown.
      *
+     * 非阻塞连接操作是通过将套接字通道置于非阻塞模式，然后调用其{@link#connect}方法来启动的。
+     * 一旦建立连接，或尝试失败，套接字通道将变得可连接，可以调用此方法来完成连接序列。
+     * 如果连接操作失败，那么调用此方法将导致抛出相应的{@link java.io.IOException}。
+     *
      * <p> If this channel is already connected then this method will not block
      * and will immediately return <tt>true</tt>.  If this channel is in
      * non-blocking mode then this method will return <tt>false</tt> if the
