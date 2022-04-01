@@ -390,6 +390,7 @@ public abstract class SocketChannel
 
     /**
      * Finishes the process of connecting a socket channel.
+     * 完成连接套接字通道的过程。
      *
      * <p> A non-blocking connection operation is initiated by placing a socket
      * channel in non-blocking mode and then invoking its {@link #connect
@@ -411,12 +412,22 @@ public abstract class SocketChannel
      * or fails, and will always either return <tt>true</tt> or throw a checked
      * exception describing the failure.
      *
+     * 如果此通道已连接，则此方法不会阻塞，并将立即返回<tt>true</tt>。
+     * 如果此通道处于非阻塞模式，则如果连接过程尚未完成，此方法将返回<tt>false</tt>。
+     * 如果此通道处于阻塞模式，则此方法将阻塞，直到连接完成或失败，
+     * 并且将始终返回<tt>true</tt>或抛出一个描述失败的已检查异常。
+     *
+     *
      * <p> This method may be invoked at any time.  If a read or write
      * operation upon this channel is invoked while an invocation of this
      * method is in progress then that operation will first block until this
      * invocation is complete.  If a connection attempt fails, that is, if an
      * invocation of this method throws a checked exception, then the channel
      * will be closed.  </p>
+     *
+     * <p>可以随时调用此方法。
+     * 如果在调用此方法的过程中调用此通道上的读或写操作，则该操作将首先阻塞，直到调用完成。
+     * 如果连接尝试失败，也就是说，如果调用此方法引发选中的异常，则通道将关闭</p>
      *
      * @return  <tt>true</tt> if, and only if, this channel's socket is now
      *          connected
