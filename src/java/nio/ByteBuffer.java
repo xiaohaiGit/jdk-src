@@ -1682,10 +1682,12 @@ public abstract class ByteBuffer
 
     /**
      * Relative <i>get</i> method for reading an int value.
+     * get int 类型的值，就是一次读4字节
      *
      * <p> Reads the next four bytes at this buffer's current position,
      * composing them into an int value according to the current byte order,
      * and then increments the position by four.  </p>
+     * 读取该缓冲区当前位置的下四个字节，根据当前字节顺序将它们组合成int值，然后将位置增加4
      *
      * @return  The int value at the buffer's current position
      *
