@@ -329,9 +329,14 @@ public abstract class SocketChannel
      * <tt>false</tt> and the connection operation must later be completed by
      * invoking the {@link #finishConnect finishConnect} method.
      *
+     *如果此通道处于非阻塞模式，则调用此方法将启动非阻塞连接操作。
+     * 如果立即建立连接，就像本地连接一样，那么该方法返回true。
+     * 否则，此方法将返回false，连接操作必须稍后通过调用finishConnect方法完成。
+     *
      * <p> If this channel is in blocking mode then an invocation of this
      * method will block until the connection is established or an I/O error
      * occurs.
+     *如果此通道处于阻塞模式，则此方法的调用将阻塞，直到建立连接或发生I/O错误。
      *
      * <p> This method performs exactly the same security checks as the {@link
      * java.net.Socket} class.  That is, if a security manager has been
@@ -339,12 +344,18 @@ public abstract class SocketChannel
      * java.lang.SecurityManager#checkConnect checkConnect} method permits
      * connecting to the address and port number of the given remote endpoint.
      *
+     * 此方法执行与套接字类完全相同的安全检查。
+     * 也就是说，如果已安装安全管理器，则此方法将验证其checkConnect方法是否允许连接到给定远程端点的地址和端口号。
+     *
      * <p> This method may be invoked at any time.  If a read or write
      * operation upon this channel is invoked while an invocation of this
      * method is in progress then that operation will first block until this
      * invocation is complete.  If a connection attempt is initiated but fails,
      * that is, if an invocation of this method throws a checked exception,
      * then the channel will be closed.  </p>
+     * 可以随时调用此方法。
+     * 如果在调用此方法的过程中调用此通道上的读或写操作，则该操作将首先阻塞，直到调用完成。
+     * 如果连接尝试已启动但失败，也就是说，如果调用此方法引发已检查的异常，则通道将关闭。
      *
      * @param  remote
      *         The remote address to which this channel is to be connected
